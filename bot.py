@@ -105,3 +105,16 @@ def handle_all(message):
 
 
 bot.polling()
+import os
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot işləyir"
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))
+    bot.polling(non_stop=True)
+    app.run(host="0.0.0.0", port=port)
